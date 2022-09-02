@@ -167,7 +167,7 @@ function Homepage() {
               <Box h={"40px"} p={"5px"} border={"3px solid yellow"} borderRadius={ "10px"}>
                 <Text>Hello</Text>
               </Box>
-              <Box border={"2px solid yellow"} mt={"20px"} p={ "5px"} borderRadius={ "10px"} >
+              <Box border={"2px solid yellow"} mt={"40px"} p={ "5px"} borderRadius={ "10px"} >
                <Text> Good Morning </Text>
                 </Box>
             </Flex>
