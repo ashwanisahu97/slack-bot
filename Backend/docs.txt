@@ -1,0 +1,15 @@
+Post  user/register -> user will signup
+
+post user/login --> user will login and get token.
+
+// token --> jwt
+
+
+// authenticated --> verify token
+post notes/create -->will create a note.
+
+Get notes/
+
+Patch notes/edit
+
+DELETE notes/delete
