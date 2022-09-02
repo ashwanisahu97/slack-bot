@@ -1,8 +1,11 @@
 
-import { AtSignIcon, ChatIcon, ChevronDownIcon, EditIcon } from '@chakra-ui/icons'
+import { AtSignIcon, ChatIcon, ChevronDownIcon, EditIcon,AttachmentIcon } from '@chakra-ui/icons'
 import { Box, Button, Flex, Heading,Text } from '@chakra-ui/react'
 import React from 'react'
-import {fayoutube} from "@fortawesome/free-brands-svg-icons"
+import { BsFillEmojiSmileFill} from "react-icons/bs"
+import {MdKeyboardVoice} from "react-icons/md"
+import { BsPencil} from "react-icons/bs"
+import { AiOutlineUserAdd} from "react-icons/ai"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react'
 import {
@@ -13,6 +16,7 @@ import {
   Wrap,
   WrapItem
 } from '@chakra-ui/react'
+import InputCompo from './InputCompo'
 function Homepage() {
   return (
     <Box>
@@ -50,10 +54,7 @@ function Homepage() {
               </Flex>
           <Flex gap={"10px"}>
               <Box>
-                  <span>
-                      
-                  <i class="fa-regular fa-pen"></i>
-                  </span>
+              <BsPencil size={"35px"} style={{paddingTop:"10px"}}/>
               </Box>
                  <Box>
                   <Heading as="h3" size={ "lg"}>Drafts</Heading> 
@@ -153,11 +154,24 @@ function Homepage() {
                                       <Box borderRadius={"5px"} border={"1px solid grey"} p={ "2px"}>
                                          <Text>206</Text>
                       </Box>
-                      <Box borderRadius={"5px"} border={"1px solid grey"} p={ "2px"}><FontAwesomeIcon icon="fa-brands fa-youtube" /></Box>
+                      <Box borderRadius={"5px"} border={"1px solid grey"} p={ "2px"}> <AiOutlineUserAdd/> </Box>
                     </Flex>
                       </Box>
-                      </Flex>
-                </Box>
+          </Flex>
+          <Box ml={ "580px"} mt={"70vh"}>
+            <Flex>
+              <Box border={ "1px solid red"}><BsFillEmojiSmileFill size={"35px"} style={{paddingTop:"10px"}}/></Box>
+              <Box border={"1px solid red"}><AttachmentIcon w={"30px"} h={ "30px"} pt={ "10px"} /></Box>
+              <Box>        
+          <InputCompo/>
+              </Box>
+              <Box>
+              <MdKeyboardVoice size={"35px"} style={{paddingTop:"10px"}}/>
+              </Box>
+            </Flex>
+        </Box>
+        </Box>
+       
                 </Flex>
       </Box >
             

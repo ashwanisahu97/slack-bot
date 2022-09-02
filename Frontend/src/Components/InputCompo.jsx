@@ -1,14 +1,11 @@
+import { Box } from '@chakra-ui/react'
 import React from 'react'
 
 const InputCompo = () => {
   return (
-      <Box>
-          <Box></Box>
-          <Box>
-              <input type="text" placeholder="Start a new message" style={{padding:"10px"}} />
+          <Box border={"1px solid red"}>
+              <input type="text" placeholder="Start a new message" style={{padding:"10px",width:"500px"}} />
           </Box>
-          <Box></Box>
-    </Box>
   )
 }
 
