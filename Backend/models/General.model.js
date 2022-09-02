@@ -2,14 +2,13 @@ const mongoose = require("mongoose")
 
 
 const generalSchema = new mongoose.Schema({
-    title: {type: String, required: true},
-    note: {type: String, required: true},
-    label: {type: String, required: true},
-    userId: {type: String, required: true}
+    taskname: {type: String, required: true},
+    // status: {type: String, required: true},
+    // tag: {type: String, required: true},
+     userId: {type: String, required: true}
 })
 
-const GeneralModel = mongoose.model("note", generalSchema)
+const GeneralModel = mongoose.model("general", generalSchema)
 
 
 module.exports = GeneralModel
-

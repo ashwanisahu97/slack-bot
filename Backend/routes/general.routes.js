@@ -6,13 +6,13 @@ const generalController = express.Router();
 
 
 generalController.post("/create", async (req, res) => {
-    const {title, note, label, userId} = req.body;
-    const new_note = new NotesModel({
-        title,
-        note,
-        label,
+    const {taskname, userId} = req.body;
+    const new_note = new GeneralModel({
+        taskname,
+       
         userId
     })
+    // console.log(new_note,"nn")
     await new_note.save()
     res.send({"message": "note created", new_note}) 
 })
@@ -20,18 +20,21 @@ generalController.post("/create", async (req, res) => {
 // for getting the read properties we have to paste the Bearer token and Authorization from the post method. in the hedder portion.
 // then we can read the given data in postman.
 generalController.get("/read", async (req, res) => {
-    const {userId} = req.body
-   const notes = await NotesModel.find({userId})
+    const userId= req.headers.userid
+    console.log(userId)
+   const notes = await GeneralModel.find({userId})
    res.send(notes)
+ 
 })
 
 
 generalController.patch("/:noteId/edit", async (req, res) => {
    const {noteId} = req.params;
    const {userId} = req.body;
-   const note = await NotesModel.findOne({_id: noteId})
+//    console.log(todoId,userId)
+   const note = await GeneralModel.findOne({_id: noteId})
    if(note.userId === userId){
-       const new_note =  await GeneralModel.findOneAndUpdate({_id: noteId}, req.body, {new: true})
+       const new_note =  await TodosModel.findOneAndUpdate({_id: todoId}, req.body, {new: true})
        return res.send({"message": "sucessfully updated", new_note})
    }
    else{
@@ -46,7 +49,7 @@ generalController.delete("/:noteId/delete", async (req, res) => {
     const {userId} = req.body;
     const note = await GeneralModel.findOne({_id: noteId})
     if(note.userId === userId){
-         await NotesModel.findOneAndDelete({_id: noteId})
+         await TodosModel.findOneAndDelete({_id: noteId})
         return res.send({"message": "sucessfully deleted"})
     }
     else{
@@ -56,4 +59,4 @@ generalController.delete("/:noteId/delete", async (req, res) => {
  })
 
 
-module.exports = notesController
+module.exports = generalController

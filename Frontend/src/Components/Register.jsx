@@ -1,13 +1,22 @@
+import { Button, Input , Box } from "@chakra-ui/react";
 import React from "react";
 import { useState } from "react";
 
 
 const Register = () => {
+    const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+   
+
+    const handleNameChange = (e) => {
+         setName(e.target.value)
+         console.log(name,"ntn")
+    }
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
+        console.log("nn")
     }
 
     const handlePaasordChange = (e) => {
@@ -16,6 +25,7 @@ const Register = () => {
 
     const handleSubmit = async () => {
         const payload ={
+            name,
             email,
             password
         }
@@ -28,14 +38,16 @@ const Register = () => {
         })
     }
     return(
-        <div>
+        <Box>
             <br/>
-            <input type="email" placeholder="email" value={email} onChange={handleEmailChange}></input> 
+             <Input type="text" placeholder="Name" value={name} onChange={handleNameChange}></Input> 
             <br/>
-            <input type="password" placeholder="password" value={password} onChange={handlePaasordChange}></input>
+            <Input type="email" placeholder="email" value={email} onChange={handleEmailChange}></Input> 
             <br/>
-            <button onClick={handleSubmit}>Register</button>
-        </div>
+            <Input type="password" placeholder="password" value={password} onChange={handlePaasordChange}></Input>
+            <br/>
+            <Button onClick={handleSubmit}>Register</Button>
+        </Box>
     )
 }
 

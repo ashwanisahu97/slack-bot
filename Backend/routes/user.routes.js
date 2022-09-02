@@ -6,12 +6,14 @@ const userController = express.Router();
 
 
 userController.post("/register",  (req, res) => {
-    const {email, password} = req.body;
+    const {email,name, password} = req.body;
+    console.log(name)
     bcrypt.hash(password, 6, async function(err, hash){
         if(err){
             res.send("Please try again")
         }
         const user = new UserModel({
+            name,
             email,
             password: hash
         })
@@ -20,9 +22,20 @@ userController.post("/register",  (req, res) => {
     res.send("signup sucessfull")
 })
 
+
+userController.post("/register/find", async (req, res) => {
+    const {name} = req.body;
+    console.log(name)
+    const user = await UserModel.find({name})
+    res.send({"data":user})
+    console.log(user)
+})
+
 userController.post("/login", async (req, res) => {
     const {email, password} = req.body;
     const user = await UserModel.findOne({email})
+    const {_id}=user    
+    
     if(!user){
         return res.send("Invalid Credentials")
     }
@@ -31,7 +44,7 @@ userController.post("/login", async (req, res) => {
     bcrypt.compare(password, hash, function(err, result){
        if(result){
         var token = jwt.sign({email, userId}, "secret")
-       return res.send({"message": "Login sucess", "token": token})
+       return res.send({"message": "Login sucess", "token": token,"id":_id})
        }
        else{
         return res.send("Invalid input")

@@ -1,4 +1,5 @@
-
+import {Login} from "./Components/Login";
+import {Register} from "./Components/Register";
 import Navbar from './Components/Navbar';
 import React from 'react'
 import Homepage from './Components/Homepage';
@@ -7,6 +8,8 @@ function App() {
   return (
     <Box>
       <Box>
+        <Login/>
+        <Register />
       <Navbar />
       </Box>
       <Box>

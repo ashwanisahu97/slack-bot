@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button, Input , Box } from "@chakra-ui/react";
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -32,14 +33,14 @@ const Login = () => {
         // console.log(response)
     }
     return(
-        <div>
+        <Box>
             <br/>
-            <input type="email" placeholder="email" value={email} onChange={handleEmailChange}></input> 
+            <Input type="email" placeholder="email" value={email} onChange={handleEmailChange}></Input> 
             <br/>
-            <input type="password" placeholder="password" value={password} onChange={handlePaasordChange}></input>
+            <Input type="password" placeholder="password" value={password} onChange={handlePaasordChange}></Input>
             <br/>
-            <button onClick={handleSubmit}>Login</button>
-        </div>
+            <Button onClick={handleSubmit}>Login</Button>
+        </Box>
     )
 }
 

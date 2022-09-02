@@ -17,6 +17,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, AddIcon, QuestionOutlineIcon, TimeIcon } from '@chakra-ui/icons';
+import { useState } from 'react';
 
 const Links = ['Dashboard', 'Projects', 'Team'];
 
@@ -34,7 +35,26 @@ const NavLink = () => (
 );
 
 export default function Navbar() {
+  
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [data, setData] = useState([])
+
+  const setChange=async (e)=> {
+    let name = e.target.value
+    await fetch("http://localhost:8080/user/register/find", {
+      method : "POST",
+      body : JSON.stringify({name}),
+      headers: {
+          "Content-Type" : "application/json"
+      }, 
+  })
+   .then((res) => res.json())
+  .then((res)=> setData(res.data))
+  
+  }
+  console.log(data,"nt")
+
+  
 
   return (
     <>
@@ -52,7 +72,10 @@ export default function Navbar() {
                           <TimeIcon h={"30px"} w={ "30px"} />
                       </Box>
                       <Box borderRadius={"10px"}>
-              <input type="text" style={{ width: "900px", height: "50px",borderRadius:"10px",fontSize:"25px",paddingLeft:"10px" }} placeholder="FT WEB 14"   />
+
+              <input onChange ={setChange}
+
+              type="text" style={{ width: "900px", height: "50px",borderRadius:"10px",fontSize:"25px",paddingLeft:"10px" }} placeholder="FT WEB 14"   />
             </Box>
             <HStack
               as={'nav'}
