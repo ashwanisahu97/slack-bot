@@ -5,6 +5,8 @@ import React from 'react'
 import { BsFillEmojiSmileFill} from "react-icons/bs"
 import {MdKeyboardVoice} from "react-icons/md"
 import { BsPencil} from "react-icons/bs"
+import { BsThreeDotsVertical} from "react-icons/bs"
+import { RiCommunityLine} from "react-icons/ri"
 import { AiOutlineUserAdd} from "react-icons/ai"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react'
@@ -21,7 +23,7 @@ function Homepage() {
   return (
     <Box>
         <Flex>
-          <Box bg={"#3f0e40"} color={ "#9f87a0 "} w={"350px"} border={"1px solid red"}>
+        <Box bg={"#3f0e40"} color={"#9f87a0 "} w={"350px"}>
               <Flex gap={ "100px"}>
                   <Box p={ "15px"}><Heading as="h3" color={"white"} size={ "lg"}>FT WEB_17</Heading></Box>
                   <Box borderRadius={"50%"} p={"10px"} pt={ "0px"} bg={"white"} h={"50px"} w={"50px"} mt={ "15px"}>
@@ -41,7 +43,7 @@ function Homepage() {
                   <AtSignIcon w={"30px"} h={"30px"} mt={ "7px"} />
               </Box>
                  <Box>
-                  <Heading as="h3" size={ "lg"}>Mentions & reactions</Heading> 
+                  <Heading as="h3" size={ "lg"}>Mentions</Heading> 
                   </Box>
               </Flex>
           <Flex gap={"10px"}>
@@ -62,7 +64,7 @@ function Homepage() {
               </Flex>
           <Flex gap={"10px"}>
               <Box>
-              <i class="fa fa-buildings"></i>
+              <RiCommunityLine size={"35px"} style={{paddingTop:"10px"}}/>
               </Box>
                  <Box>
                   <Heading as="h3" size={ "lg"}>Slack Connects</Heading> 
@@ -70,7 +72,7 @@ function Homepage() {
               </Flex>
           <Flex gap={"10px"}>
               <Box>
-              
+              <BsThreeDotsVertical size={"35px"} style={{paddingTop:"10px"}}/>
               </Box>
                  <Box>
                   <Heading as="h3" size={ "lg"}>more</Heading> 
@@ -121,8 +123,8 @@ function Homepage() {
               </Box>
           </Box>
    </Box>
-              <Box w={"1200px"} border={ "1px solid red"}>
-              <Flex border={"1px solid red"} justify={"space-between"}>
+              <Box w={"1200px"}>
+              <Flex justify={"space-between"}>
                 <Box>
           <Menu>
               <MenuButton fontSize={ "25px"} as={Button} rightIcon={<ChevronDownIcon />}>
@@ -154,14 +156,27 @@ function Homepage() {
                                       <Box borderRadius={"5px"} border={"1px solid grey"} p={ "2px"}>
                                          <Text>206</Text>
                       </Box>
-                      <Box borderRadius={"5px"} border={"1px solid grey"} p={ "2px"}> <AiOutlineUserAdd/> </Box>
+                      <Box borderRadius={"5px"} border={"1px solid grey"} p={ "2px"}> <AiOutlineUserAdd size={"30px"} style={{paddingTop:"2px"}}/> </Box>
                     </Flex>
                       </Box>
           </Flex>
-          <Box ml={ "580px"} mt={"70vh"}>
-            <Flex>
-              <Box border={ "1px solid red"}><BsFillEmojiSmileFill size={"35px"} style={{paddingTop:"10px"}}/></Box>
-              <Box border={"1px solid red"}><AttachmentIcon w={"30px"} h={ "30px"} pt={ "10px"} /></Box>
+
+{/* content box */}
+          <Box p={"10px"} m={ "20px"}>
+            <Flex gap={ "300px"}>
+              <Box h={"40px"} p={"5px"} border={"3px solid yellow"} borderRadius={ "10px"}>
+                <Text>Hello</Text>
+              </Box>
+              <Box border={"2px solid yellow"} mt={"20px"} p={ "5px"} borderRadius={ "10px"} >
+               <Text> Good Morning </Text>
+                </Box>
+            </Flex>
+</Box>
+
+          <Box ml={ "550px"} mt={"60vh"}>
+            <Flex borderRadius={"10px"} border={ "2px solid grey"}>
+              <Box><BsFillEmojiSmileFill size={"35px"} style={{paddingTop:"10px"}}/></Box>
+              <Box><AttachmentIcon w={"30px"} h={ "30px"} pt={ "10px"} /></Box>
               <Box>        
           <InputCompo/>
               </Box>

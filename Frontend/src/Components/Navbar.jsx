@@ -63,7 +63,8 @@ export default function Navbar() {
               ))}
             </HStack>
           </HStack>
-          <Flex alignItems={'center'}>
+          <Flex alignItems={'center'} ml={ "40px"}>
+            <Box>
             <Button
               variant={'solid'}
               colorScheme={''}
@@ -71,7 +72,9 @@ export default function Navbar() {
               mr={4}
             >
                           <QuestionOutlineIcon w={ "50px"} h={"30px"} color={"red"}/>
-            </Button>
+              </Button>
+              </Box>
+            <Box>
             <Menu>
               <MenuButton
                 as={Button}
@@ -92,7 +95,8 @@ export default function Navbar() {
                 <MenuDivider />
                 <MenuItem>Link 3</MenuItem>
               </MenuList>
-            </Menu>
+              </Menu>
+              </Box>
           </Flex>
         </Flex>
 
