@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Input , Box } from "@chakra-ui/react";
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -27,7 +28,9 @@ const Login = () => {
         })
         .then((res) => res.json())
         .then((res) => {
+
             localStorage.setItem("token", res.token)
+            Navigate("/dashbord")
         })
         .catch((err) => console.log(err))
         // console.log(response)

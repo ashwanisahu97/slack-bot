@@ -39,7 +39,7 @@ const InputCompo = ({add}) => {
         style={{padding:"10px",width:"500px"}}
          onChange={handletaskname}/>
         </Box>
-        <Box>
+        <Box border="1px solid red" onClick={handleSubmit}>
               <AiOutlineSend size={"35px"} style={{paddingTop:"10px"}}/>
               </Box>
       </Flex>  
