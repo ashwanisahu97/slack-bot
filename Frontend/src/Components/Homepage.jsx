@@ -1,7 +1,9 @@
+import React, {useState, useEffect} from "react"; 
 
 import { AtSignIcon, ChatIcon, ChevronDownIcon, EditIcon,AttachmentIcon } from '@chakra-ui/icons'
 import { Box, Button, Flex, Heading,Text } from '@chakra-ui/react'
-import React from 'react'
+import InputCompo from "./InputCompo";
+import { useParams,useNavigate } from "react-router-dom";
 import { BsFillEmojiSmileFill} from "react-icons/bs"
 import {MdKeyboardVoice} from "react-icons/md"
 import { BsPencil} from "react-icons/bs"
@@ -18,8 +20,65 @@ import {
   Wrap,
   WrapItem
 } from '@chakra-ui/react'
-import InputCompo from './InputCompo'
+
+
+
 function Homepage() {
+  const token = localStorage.getItem("token")
+  const {id} = useParams();
+  const [data , setData]=useState([])
+  const userId=id;
+  const navigate=useNavigate()
+   const getNotes = async() => {
+      
+       await fetch(`http://localhost:8080/general/read`, {
+           method : "GET",
+           headers: {
+               "Content-Type" : "application/json",
+               userId
+           }, 
+       })
+       .then((res) => res.json())
+       .then((res) => {
+           setData([...res]);
+       })
+       .catch((err) => console.log(err)) 
+   }
+   const getAdd=async(payload)=>{
+     await fetch("http://localhost:8080/general/create", {
+           method : "POST",
+           body : JSON.stringify(payload),
+           headers: {
+               "Content-Type" : "application/json",
+           }, 
+       }).then((res)=>{
+         getNotes()
+       }).catch((err)=>{
+           alert("something went wrong")
+       })
+   }
+   useEffect(() => {
+     getNotes()
+   }, [])
+
+  console.log(data)
+  const editing=(edit)=>{
+navigate(`/notes/${id}/${edit}`)
+  }
+  const Delete=async(noteId)=>{
+   await fetch(`http://localhost:8080/general/${noteId}/delete`, {
+     method : "DELETE",
+     body : JSON.stringify({userId}),
+     headers: {
+         "Content-Type" : "application/json",
+         "Authorization" : `Bearer ${localStorage.getItem("token")}`
+     }, 
+ }).then((res)=>{
+   getNotes()
+ }).catch((err)=>{
+     alert("something went wrong")
+ })
+}
   return (
     <Box>
         <Flex>
@@ -163,7 +222,7 @@ function Homepage() {
 
 {/* content box */}
           <Box p={"10px"} m={ "20px"}>
-            <Flex gap={ "300px"}>
+            <Flex gap={ "300px"} border={"2px solid"}>
               <Box h={"40px"} p={"5px"} border={"3px solid yellow"} borderRadius={ "10px"}>
                 <Text>Hello</Text>
               </Box>
@@ -192,6 +251,7 @@ function Homepage() {
             
   );
 }
+
 
 
 export default Homepage;

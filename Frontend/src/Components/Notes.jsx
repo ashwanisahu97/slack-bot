@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
-import CreateNotes from "./CreateNotes";
+import CreateNotes from "./InputCompo";
 import { useParams,useNavigate } from "react-router-dom";
-// import { Delete } from "./Delete";
+
 const Notes = () => {
    const token = localStorage.getItem("token")
    const {id} = useParams();
@@ -14,7 +14,6 @@ const Notes = () => {
             method : "GET",
             headers: {
                 "Content-Type" : "application/json",
-                "Authorization" : `Bearer ${localStorage.getItem("token")}` ,
                 userId
             }, 
         })
@@ -30,7 +29,6 @@ const Notes = () => {
             body : JSON.stringify(payload),
             headers: {
                 "Content-Type" : "application/json",
-                "Authorization" : `Bearer ${localStorage.getItem("token")}`
             }, 
         }).then((res)=>{
           getNotes()
