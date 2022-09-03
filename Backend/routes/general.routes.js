@@ -22,7 +22,7 @@ generalController.post("/create", async (req, res) => {
 generalController.get("/read", async (req, res) => {
     const userId= req.headers.userid
     console.log(userId)
-   const notes = await GeneralModel.find({userId})
+   const notes = await GeneralModel.find()
    res.send(notes)
  
 })
